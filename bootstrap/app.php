@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->withMiddleware(function (Middleware $middleware) {
+    $middleware->statefulApi(); // This enables CORS and Sanctum for React
+    })
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
